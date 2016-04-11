@@ -16,6 +16,12 @@
     "url": "https://github.com/scarletsky/react-masonry-layout/issues"
   },
   "homepage": "https://github.com/scarletsky/react-masonry-layout#readme",
+  "keywords": [
+    "react",
+    "masonry",
+    "infinite scroll",
+    "bricks"
+  ],
   "peerDependencies": {
     "react": ">= 0.14.0",
     "react-dom": ">= 0.14.0"
