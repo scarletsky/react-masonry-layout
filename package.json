@@ -1,0 +1,26 @@
+{
+  "name": "react-bricks",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scarletsky/react-bricks.git"
+  },
+  "author": "scarletsky <scarletsky1025@gmail.com> (https://github.com/scarletsky)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scarletsky/react-bricks/issues"
+  },
+  "homepage": "https://github.com/scarletsky/react-bricks#readme",
+  "peerDependencies": {
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0"
+  },
+  "dependencies": {
+    "bricks.js": "^1.1.1"
+  }
+}
