@@ -31,7 +31,11 @@ class MasonryLayout extends Component {
       sizes: this.props.sizes
     });
 
-    instance.pack()
+    instance.resize(true)
+
+    if (this.props.children.length > 0) {
+      instance.pack()
+    }
 
     /* eslint react/no-did-mount-set-state: 0 */
     this.setState({ instance });
@@ -41,12 +45,14 @@ class MasonryLayout extends Component {
     if (prevProps.children.length === 0 && this.props.children.length === 0)
       return
 
+    const { instance } = this.state
+
     if (prevProps.children.length === 0 && this.props.children.length > 0) {
-      return this.state.instance.resize(true).pack()
+      return instance.pack()
     }
 
     if (prevProps.children.length !== this.props.children.length) {
-      return this.state.instance.update()
+      return instance.update()
     }
   }
 
