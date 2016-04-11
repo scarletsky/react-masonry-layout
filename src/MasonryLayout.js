@@ -1,6 +1,8 @@
 import React, { PropTypes, Component } from 'react'
 import Bricks from 'bricks.js'
+import InfiniteScroll from './InfiniteScroll'
 
+@InfiniteScroll
 class MasonryLayout extends Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
