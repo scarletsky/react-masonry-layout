@@ -1,5 +1,5 @@
 {
-  "name": "react-bricks",
+  "name": "react-masonry-layout",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/scarletsky/react-bricks.git"
+    "url": "git+https://github.com/scarletsky/react-masonry-layout.git"
   },
   "author": "scarletsky <scarletsky1025@gmail.com> (https://github.com/scarletsky)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/scarletsky/react-bricks/issues"
+    "url": "https://github.com/scarletsky/react-masonry-layout/issues"
   },
-  "homepage": "https://github.com/scarletsky/react-bricks#readme",
+  "homepage": "https://github.com/scarletsky/react-masonry-layout#readme",
   "peerDependencies": {
     "react": "^15.0.0",
     "react-dom": "^15.0.0"
