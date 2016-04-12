@@ -16,11 +16,8 @@ export default (ComposedComponent) => class I extends Component {
     infiniteScrollLoading: false,
     infiniteScrollEdge: 'bottom',
     infiniteScrollDistance: 200,
-    infiniteScrollDisabled: false
-  }
-
-  state = {
-    lastScrollTop: 0 // 用来计算滚动方向
+    infiniteScrollDisabled: false,
+    infiniteScrollSpinner: <div>this is a loader</div>
   }
 
   componentDidMount() {
@@ -36,22 +33,24 @@ export default (ComposedComponent) => class I extends Component {
   }
 
   handleScroll() {
-    const { id, infiniteScroll, infiniteScrollLoading } = this.props
-    let scrollTop = document.body.scrollTop
-    let bottom = window.innerHeight - this.refs[id].getBoundingClientRect().bottom
-    if ( bottom > 0
-      && scrollTop > this.state.lastScrollTop
-      && infiniteScrollLoading === false
+    const { infiniteScroll, infiniteScrollLoading } = this.props
+    if ( this.edgeDistance < this.props.infiniteScrollDistance
+      && !infiniteScrollLoading
       && typeof infiniteScroll === 'function'
     ) {
       infiniteScroll()
     }
-
-    this.setState(Object.assign({}, this.state, { lastScrollTop: scrollTop }))
   }
 
   get infiniteScrollSpinner() {
-    return this.props.infiniteScrollSpinner || <div>this is a loader</div>
+    return this.props.infiniteScrollSpinner
+  }
+
+  get edgeDistance() {
+    const { id } = this.props
+    return this.props.infiniteScrollEdge === 'bottom'
+      ? this.refs[id].getBoundingClientRect().bottom - window.innerHeight
+      : this.refs[id].getBoundingClientRect().top * (-1)
   }
 
   render() {
