@@ -4,7 +4,7 @@ export default (ComposedComponent) => class I extends Component {
 
   static propTypes = {
     id: PropTypes.string.isRequired,
-    infiniteScroll: PropTypes.func.isRequired,
+    infiniteScroll: PropTypes.func,
     infiniteScrollLoading: PropTypes.bool,
     infiniteScrollEdge: PropTypes.oneOf(['top', 'bottom']),
     infiniteScrollDistance: PropTypes.number,
@@ -13,6 +13,7 @@ export default (ComposedComponent) => class I extends Component {
   }
 
   static defaultProps = {
+    infiniteScroll: () => {},
     infiniteScrollLoading: false,
     infiniteScrollEdge: 'bottom',
     infiniteScrollDistance: 200,
@@ -35,9 +36,7 @@ export default (ComposedComponent) => class I extends Component {
   handleScroll() {
     const { infiniteScroll, infiniteScrollLoading } = this.props
     if ( this.edgeDistance < this.props.infiniteScrollDistance
-      && !infiniteScrollLoading
-      && typeof infiniteScroll === 'function'
-    ) {
+      && !infiniteScrollLoading ) {
       infiniteScroll()
     }
   }
