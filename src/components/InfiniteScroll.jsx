@@ -27,7 +27,7 @@ export default (ComposedComponent) => class I extends Component {
     }
   }
 
-  componengWillUnmount() {
+  componentWillUnmount() {
     if (!this.props.infiniteScrollDisabled) {
       window.removeEventListener('scroll', ::this.handleScroll)
     }
