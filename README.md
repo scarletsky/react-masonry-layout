@@ -75,50 +75,21 @@ class Masonry extends React.Component {
 
 ## API
 
-- **id** `String` (Required)
-
-- **packed** `String`
-
-  default: `data-packed`
-
-- **size**: `Array`
-
-  default:
-  ```
-  [
-    { columns: 2, gutter: 20 },
-    { mq: '768px', columns: 3, gutter: 20 },
-    { mq: '1024px', columns: 6, gutter: 20 }
-  ]
-  ```
-
-- **className** `String`
-
-  default: `''`
-
-- **style** `Object`
-
-  default: `{}`
-
-- **infiniteScroll** `Function`
-
-  default: `() => {}`
-
-- **infiniteScrollLoading** `Boolean`
-
-  default: `false`
-
-- **infiniteScrollDistance** `Int`
-
-  default: `200`
-
-- **infiniteScrollDisabled** `Boolean`
-
-  default: `false`
-
-- **infiniteScrollSpinner** `Element`
-
-  default: `<div>this is a spinner</div>`
+|       props        |        type       |       default      |     description    |
+|--------------------|-------------------|--------------------|--------------------|
+|        id          |       string      |        `null`      | required           |
+|      packed        |       string      |    `data-packed`   | optional, see [Brkcks.js](https://github.com/callmecavs/bricks.js) |
+|       size         |       array       |    `[ { columns: 2, gutter: 20 }, { mq: '768px', columns: 3, gutter: 20 }, { mq: '1024px', columns: 6, gutter: 20 } ]` | optional, see [Brkcks.js](https://github.com/callmecavs/bricks.js) |
+|     className      |       string      |         `''`       | optional, the css classname you want to use |
+|       style        |       object      |         `{}`       | optional, the inline style you want to use |
+|  infiniteScroll    |      function     |      `() => {}`    | optional, the function that used to load more data |
+|  infiniteScrollContainer|  string     |        `window`    | optional, by default, it will listen to the `window`'s `scroll` event. If you want to listen to some `div`'s `scroll` event, please set the container's id to it |
+|  infiniteScrollDisabled |  boolean    |       `false`      | optional, if you don't want to trigger `infiniteScroll`, set it to `false` |
+|  infiniteScrollLoading  |  boolean    |       `false`      | optional, when you are loading data, please set it to `true`, then the `infiniteScroll` will not trigger |
+|  infiniteScrollEnd      |  boolean    |       `false`      | optional, when no more data, please set it to `true`, then the `infiniteScroll` will not trigger |
+|  infiniteScrollDistance |  number     |        `200`       | optional, the distance to trigger `infiniteScroll` |
+|  infiniteScrollSpinner  |  element    | `<div>this is a loader</div>` | optional, override it if you want to custom the loading spinner |
+|  infiniteScrollEndIndicator | element | `<div>no more data</div>`     | optional, override it if you want to custom the no more data indicator |
 
 
 ## License
