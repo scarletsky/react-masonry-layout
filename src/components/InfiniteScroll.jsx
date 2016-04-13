@@ -4,7 +4,8 @@ export default (ComposedComponent) => class I extends Component {
 
   static propTypes = {
     id: PropTypes.string.isRequired,
-    infiniteScroll: PropTypes.func,
+    infiniteScroll: PropTypes.func.isRequired,
+    infiniteScrollContainer: PropTypes.string,
     infiniteScrollLoading: PropTypes.bool,
     infiniteScrollEdge: PropTypes.oneOf(['top', 'bottom']),
     infiniteScrollDistance: PropTypes.number,
@@ -13,7 +14,7 @@ export default (ComposedComponent) => class I extends Component {
   }
 
   static defaultProps = {
-    infiniteScroll: () => {},
+    infiniteScrollContainer: 'window',
     infiniteScrollLoading: false,
     infiniteScrollEdge: 'bottom',
     infiniteScrollDistance: 200,
@@ -23,13 +24,34 @@ export default (ComposedComponent) => class I extends Component {
 
   componentDidMount() {
     if (!this.props.infiniteScrollDisabled) {
-      window.addEventListener('scroll', ::this.handleScroll)
+
+      const { infiniteScrollContainer } = this.props
+
+      if (infiniteScrollContainer === 'window') {
+        window.addEventListener('scroll', ::this.handleScroll)
+      } else {
+        document
+          .getElementById(infiniteScrollContainer)
+          .addEventListener('mousewheel', ::this.handleScroll)
+      }
+
+
     }
   }
 
   componentWillUnmount() {
     if (!this.props.infiniteScrollDisabled) {
-      window.removeEventListener('scroll', ::this.handleScroll)
+
+      const { infiniteScrollContainer } = this.props
+
+      if (infiniteScrollContainer === 'window') {
+        window.removeEventListener('scroll', ::this.handleScroll)
+      } else {
+        document
+          .getElementById(infiniteScrollContainer)
+          .addEventListener('mousewheel', ::this.handleScroll)
+      }
+
     }
   }
 
