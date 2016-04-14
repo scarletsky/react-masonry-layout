@@ -78,8 +78,8 @@ class Masonry extends React.Component {
 |       props        |        type       |       default      |     description    |
 |--------------------|-------------------|--------------------|--------------------|
 |        id          |       string      |        `null`      | required           |
-|      packed        |       string      |    `data-packed`   | optional, see [Brkcks.js](https://github.com/callmecavs/bricks.js) |
-|       size         |       array       |    `[ { columns: 2, gutter: 20 }, { mq: '768px', columns: 3, gutter: 20 }, { mq: '1024px', columns: 6, gutter: 20 } ]` | optional, see [Brkcks.js](https://github.com/callmecavs/bricks.js) |
+|      packed        |       string      |    `data-packed`   | optional, see [Bricks.js](https://github.com/callmecavs/bricks.js) |
+|       size         |       array       |    `[ { columns: 2, gutter: 20 }, { mq: '768px', columns: 3, gutter: 20 }, { mq: '1024px', columns: 6, gutter: 20 } ]` | optional, see [Bricks.js](https://github.com/callmecavs/bricks.js) |
 |     className      |       string      |         `''`       | optional, the css classname you want to use |
 |       style        |       object      |         `{}`       | optional, the inline style you want to use |
 |  infiniteScroll    |      function     |      `() => {}`    | optional, the function that used to load more data |
