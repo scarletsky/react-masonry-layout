@@ -26,19 +26,23 @@ export default (ComposedComponent) => class I extends Component {
     infiniteScrollEndIndicator: <div>no more data</div>
   }
 
+  constructor(props) {
+    super(props)
+    this.handleScroll = this.handleScroll.bind(this)
+  }
+
   componentDidMount() {
     if (!this.props.infiniteScrollDisabled) {
 
       const { infiniteScrollContainer } = this.props
 
       if (infiniteScrollContainer === 'window') {
-        window.addEventListener('scroll', ::this.handleScroll)
+        window.addEventListener('scroll', this.handleScroll)
       } else {
         document
           .getElementById(infiniteScrollContainer)
-          .addEventListener('mousewheel', ::this.handleScroll)
+          .addEventListener('mousewheel', this.handleScroll)
       }
-
 
     }
   }
@@ -49,11 +53,11 @@ export default (ComposedComponent) => class I extends Component {
       const { infiniteScrollContainer } = this.props
 
       if (infiniteScrollContainer === 'window') {
-        window.removeEventListener('scroll', ::this.handleScroll)
+        window.removeEventListener('scroll', this.handleScroll)
       } else {
         document
           .getElementById(infiniteScrollContainer)
-          .removeEventListener('mousewheel', ::this.handleScroll)
+          .removeEventListener('mousewheel', this.handleScroll)
       }
 
     }
