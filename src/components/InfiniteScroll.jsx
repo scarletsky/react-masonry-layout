@@ -53,7 +53,7 @@ export default (ComposedComponent) => class I extends Component {
       } else {
         document
           .getElementById(infiniteScrollContainer)
-          .addEventListener('mousewheel', ::this.handleScroll)
+          .removeEventListener('mousewheel', ::this.handleScroll)
       }
 
     }
