@@ -56,7 +56,7 @@ class MasonryLayout extends Component {
     }
   }
 
-  componengWillUnmount() {
+  componentWillUnmount() {
     this.state.instance.resize(false)
   }
 
