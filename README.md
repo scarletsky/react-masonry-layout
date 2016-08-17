@@ -94,4 +94,4 @@ class Masonry extends React.Component {
 
 ## License
 
-GPL-3.0 (Because bricks.js use GPL-3.0)
+MIT.
