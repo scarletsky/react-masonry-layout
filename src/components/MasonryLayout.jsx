@@ -51,9 +51,7 @@ class MasonryLayout extends Component {
       return instance.pack()
     }
 
-    if (prevProps.children.length !== this.props.children.length) {
-      return instance.update()
-    }
+    return instance.update()
   }
 
   componentWillUnmount() {
