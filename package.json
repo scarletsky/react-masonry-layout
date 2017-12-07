@@ -31,7 +31,7 @@
     "react-dom": ">= 0.14.0"
   },
   "dependencies": {
-    "bricks.js": "^1.1.2",
+    "bricks.js": "^1.8.0",
     "prop-types": "^15.6.0"
   },
   "devDependencies": {
