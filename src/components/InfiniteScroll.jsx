@@ -5,7 +5,7 @@ export default (ComposedComponent) => class I extends Component {
 
   static propTypes = {
     id: PropTypes.string.isRequired,
-    infiniteScroll: PropTypes.func.isRequired,
+    infiniteScroll: PropTypes.func,
     infiniteScrollContainer: PropTypes.string,
     infiniteScrollLoading: PropTypes.bool,
     infiniteScrollEnd: PropTypes.bool,
@@ -17,6 +17,7 @@ export default (ComposedComponent) => class I extends Component {
   }
 
   static defaultProps = {
+    infiniteScroll: () => {},
     infiniteScrollContainer: 'window',
     infiniteScrollLoading: false,
     infiniteScrollEnd: false,
@@ -64,7 +65,6 @@ export default (ComposedComponent) => class I extends Component {
     }
   }
 
-
   handleScroll() {
     const { infiniteScroll, infiniteScrollLoading, infiniteScrollEnd } = this.props
     if ( this.edgeDistance < this.props.infiniteScrollDistance
@@ -75,16 +75,15 @@ export default (ComposedComponent) => class I extends Component {
   }
 
   get edgeDistance() {
-    const { id } = this.props
     return this.props.infiniteScrollEdge === 'bottom'
-      ? this.refs[id].getBoundingClientRect().bottom - window.innerHeight
-      : this.refs[id].getBoundingClientRect().top * (-1)
+      ? this.containerElement.getBoundingClientRect().bottom - window.innerHeight
+      : this.containerElement.getBoundingClientRect().top * (-1)
   }
 
   render() {
     return (
       <div>
-        <div ref={this.props.id} >
+        <div ref={(element) => { this.containerElement = element; }} >
           <ComposedComponent {...this.props} />
         </div>
         {this.props.infiniteScrollLoading && this.props.infiniteScrollSpinner}
