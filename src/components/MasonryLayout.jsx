@@ -15,14 +15,14 @@ class MasonryLayout extends Component {
   }
 
   static defaultProps = {
+    style: {},
+    className: '',
     packed: 'data-packed',
     sizes: [
       { columns: 2, gutter: 20 },
       { mq: '768px', columns: 3, gutter: 20 },
       { mq: '1024px', columns: 6, gutter: 20 }
-    ],
-    style: {},
-    className: ''
+    ]
   }
 
   componentDidMount() {
@@ -38,27 +38,24 @@ class MasonryLayout extends Component {
       instance.pack()
     }
 
-    /* eslint react/no-did-mount-set-state: 0 */
-    this.setState({ instance });
+    this.bricksInstance = instance;
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.children.length === 0 && this.props.children.length === 0)
       return
 
-    const { instance } = this.state
-
     if (prevProps.children.length === 0 && this.props.children.length > 0) {
-      return instance.pack()
+      return this.bricksInstance.pack()
     }
 
     if (prevProps.children.length !== this.props.children.length) {
-      return instance.update()
+      return this.bricksInstance.update()
     }
   }
 
   componentWillUnmount() {
-    this.state.instance.resize(false)
+    this.bricksInstance.resize(false)
   }
 
   render() {
