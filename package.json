@@ -27,12 +27,12 @@
     "bricks"
   ],
   "peerDependencies": {
-    "react": ">= 0.14.0",
-    "react-dom": ">= 0.14.0"
+    "react": ">= 15.5.0"
   },
   "dependencies": {
     "bricks.js": "^1.8.0",
-    "prop-types": "^15.6.0"
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -44,8 +44,6 @@
     "babel-preset-stage-0": "^6.5.0",
     "eslint": "^2.7.0",
     "eslint-plugin-react": "^4.3.0",
-    "react": ">= 0.14.0",
-    "react-dom": ">= 0.14.0",
     "rimraf": "^2.5.2"
   }
 }
