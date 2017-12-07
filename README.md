@@ -18,57 +18,47 @@ import MasonryLayout from 'react-masonry-layout'
 
 class Masonry extends React.Component {
 
-  static defaultProps = {
-    maxCount: 5,
-    perPage: 20
-  }
-
   state = {
-    count: 0,
-    isLoading: false,
+    perPage: 10,
     items: Array(20).fill()
   }
 
-
-  getItems() {
-    if (this.state.count >= this.props.maxCount) return
-    this.setState(Object.assign(
-      {},
-      this.state,
-      { isLoading: true }
-    ), () => {
-      setTimeout(() => {
-        this.setState(Object.assign(
-          {},
-          this.state,
-          {
-            isLoading: false,
-            items: this.state.items.concat(
-              Array(perPage).fill()
-            )
-          }
-        ))
-      })
-    })
+  loadItems = () => {
+      this.setState({
+        items: this.state.items.concat(Array(this.state.perPage).fill())
+      });
   }
 
   render() {
-    <MasonryLayout
-      id="items"
-      infiniteScroll={::this.getItems}
-      infiniteScrollLoading={this.state.isLoading} >
+    return (
+      <div className="App">
 
-      {this.state.items.map((v, i) => <div
-        key={i}
-        style={{
-          width: '236px',
-          height: `${i % 2 === 0 ? 4 * 50 : 50 }px`,
-          display: 'block',
-          background: 'rgba(0,0,0,0.7)'
-        }}
-        />)}
+        <MasonryLayout
+          id="masonry-layout"
+          infiniteScroll={this.loadItems}>
 
-    </MasonryLayout>
+          {this.state.items.map((v, i) => {
+            let height = i % 2 === 0 ? 200 : 100;
+            return (
+              <div
+                key={i}
+                style={{
+                  width: '100px',
+                  height: `${height}px`,
+                  lineHeight: `${height}px`,
+                  color: 'white',
+                  fontSize: '32px',
+                  display: 'block',
+                  background: 'rgba(0,0,0,0.7)'
+                }}>
+                {i}
+              </div>
+            )}
+          )}
+
+        </MasonryLayout>
+      </div>
+    );
   }
 }
 ```
