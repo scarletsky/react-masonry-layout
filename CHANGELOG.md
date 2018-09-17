@@ -1,5 +1,10 @@
 # React Masonry Layout ChangeLog
 
+## 0.4.0
+
+- Add `getBricksInstance`
+- Support `position`
+
 ## 0.3.0
 
 - Support React 16+
