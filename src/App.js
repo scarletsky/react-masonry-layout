@@ -6,7 +6,7 @@ class App extends Component {
 
   state = {
     perPage: 10,
-    items: Array(20).fill()
+    items: Array(50).fill()
   }
 
   loadItems = () => {
