@@ -9,6 +9,7 @@ class MasonryLayout extends Component {
     id: PropTypes.string.isRequired,
     packed: PropTypes.string,
     sizes: PropTypes.array,
+    position: PropTypes.bool,
     style: PropTypes.object,
     className: PropTypes.string,
     children: PropTypes.arrayOf(PropTypes.element).isRequired
@@ -18,6 +19,7 @@ class MasonryLayout extends Component {
     style: {},
     className: '',
     packed: 'data-packed',
+    position: false,
     sizes: [
       { columns: 2, gutter: 20 },
       { mq: '768px', columns: 3, gutter: 20 },
@@ -29,7 +31,8 @@ class MasonryLayout extends Component {
     const instance = Bricks({
       container: `#${this.props.id}`,
       packed: this.props.packed,
-      sizes: this.props.sizes
+      sizes: this.props.sizes,
+      position: this.props.position
     });
 
     instance.resize(true)
