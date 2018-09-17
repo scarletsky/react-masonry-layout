@@ -58,6 +58,10 @@ class MasonryLayout extends Component {
     this.bricksInstance.resize(false)
   }
 
+  getBricksInstance() {
+    return this.bricksInstance;
+  }
+
   render() {
     const { id, className, style, children } = this.props;
     return (

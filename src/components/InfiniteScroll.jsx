@@ -74,6 +74,10 @@ export default (ComposedComponent) => class I extends Component {
     }
   }
 
+  getBricksInstance() {
+    return this.instanceElement.getBricksInstance();
+  }
+
   get edgeDistance() {
     return this.props.infiniteScrollEdge === 'bottom'
       ? this.containerElement.getBoundingClientRect().bottom - window.innerHeight
@@ -84,7 +88,9 @@ export default (ComposedComponent) => class I extends Component {
     return (
       <div>
         <div ref={(element) => { this.containerElement = element; }} >
-          <ComposedComponent {...this.props} />
+          <ComposedComponent
+            ref={(element) => { this.instanceElement = element; }}
+            {...this.props} />
         </div>
         {this.props.infiniteScrollLoading && this.props.infiniteScrollSpinner}
         {this.props.infiniteScrollEnd && this.props.infiniteScrollEndIndicator}
